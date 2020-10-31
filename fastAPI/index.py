@@ -30,7 +30,7 @@ class ChuckJoke(BaseModel):
 
     id: int
     joke: str
-    categories: Optional[List[str]] = []
+    categories: Optional[List[str]]
 
 async def getChuckJokes(quantity: int) -> List[ChuckJoke]:
     async with session.get(f'http://api.icndb.com/jokes/random/{quantity}') as response:
@@ -49,7 +49,7 @@ async def getChuckJoke(id: int) -> ChuckJoke:
             return []
 
         return joke['value']
-            
+
 
 async def getSooMuchJokes():
     tasks = []
